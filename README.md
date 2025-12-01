@@ -4,12 +4,6 @@
 
 ---
 
-## 🔗 배포 주소 & GitHub
-
-- GitHub: [https://github.com/kevinmj12/stock-simulator](https://github.com/kevinmj12/stock-simulator)
-
----
-
 ## 🗓️ 프로젝트 개요
 
 | 항목       | 내용                                     |
@@ -271,6 +265,13 @@ $ npm start
 백엔드 전반을 구현하며 실무 감각을 익힐 수 있었고, **EC2 Instance 서버 배포 경험**을 통해 개발부터 배포까지의 전체 사이클을 경험할 수 있었습니다. 또한 팀원과의 소통 및 Git 기반 협업 경험도 큰 자산이 되었습니다.
 
 -----
+
+## 🔗 배포 주소 & GitHub
+
+- GitHub: [https://github.com/kevinmj12/stock-simulator](https://github.com/kevinmj12/stock-simulator)
+
+---
+
 
 ```
 ```
