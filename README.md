@@ -1,106 +1,131 @@
-요청하신 내용을 바탕으로 **Problems & Solutions** 섹션을 상세하게 확장하고, 코드 스니펫을 포함하여 가독성 있게 정리했습니다. 또한 **협업 방식**, **배운 점**, **마무리** 섹션까지 모두 포함하여 하나의 완벽한 `README.md`로 통합해 드립니다.
-
-아래 내용을 복사하여 그대로 사용하세요.
-
------
-
-````markdown
 # 📈 ProgramerStocks - 모의 주식 투자 시뮬레이터
 
-> **실제 주식 거래처럼! 실시간 가격 변동을 반영한 종목 매수/매도 시뮬레이션 웹 서비스**
+> 실제 주식 거래처럼! 실시간 가격 변동을 반영한 종목 매수/매도 시뮬레이션 웹 서비스
 
-![Generic badge](https://img.shields.io/badge/Node.js-18.x-green.svg) ![Generic badge](https://img.shields.io/badge/React-18.x-blue.svg) ![Generic badge](https://img.shields.io/badge/MySQL-8.0-orange.svg)
+---
 
-<br/>
+## 🔗 배포 주소 & GitHub
 
-## 🔗 링크
-- **GitHub Repository**: [https://github.com/kevinmj12/stock-simulator](https://github.com/kevinmj12/stock-simulator)
+- GitHub: [https://github.com/kevinmj12/stock-simulator](https://github.com/kevinmj12/stock-simulator)
 
-<br/>
+---
 
 ## 🗓️ 프로젝트 개요
 
-| 항목 | 내용 |
-| --- | --- |
-| **프로젝트명** | ProgramerStocks |
-| **개발 기간** | 2025.05.20 ~ 2025.06.11 (약 3주) |
-| **팀 구성** | 4인 팀 프로젝트 (Frontend 2명, Backend 2명) |
-| **담당 역할** | **Backend Lead** (API 설계 및 개발, DB 구축, 서버 배포) |
+| 항목       | 내용                                     |
+| ---------- | ---------------------------------------- |
+| 프로젝트명 | ProgramerStocks                          |
+| 개발 기간  | 2025.05.20 ~ 2025.06.11                 |
+| 팀 구성    | 4인 팀 프로젝트 (프론트엔드 2, 백엔드 2) |
+| 내 역할    | 백엔드 API 개발 및 서버 배포             |
 
-<br/>
+---
 
-## 🛠️ 기술 스택 (Tech Stack)
+## 🛠️ 기술 스택
 
-### 💻 Frontend
-<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white"/> <img src="https://img.shields.io/badge/Styled Components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/> <img src="https://img.shields.io/badge/Zustand-orange?style=flat-square&logo=react&logoColor=white"/> <img src="https://img.shields.io/badge/Recharts-22B5BF?style=flat-square&logo=apache-echarts&logoColor=white"/>
+### 💻 프론트엔드
 
-### 🌐 Backend
-<img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=Node.js&logoColor=white"/> <img src="https://img.shields.io/badge/Express-000000?style=flat-square&logo=Express&logoColor=white"/> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/> <img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=JSON%20web%20tokens&logoColor=white"/> <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=Axios&logoColor=white"/>
+- React + TypeScript
+- styled-components
+- Zustand (상태관리)
+- Recharts (차트 시각화)
+- react-hook-form (폼 유효성 검사)
 
-### 🚀 DevOps & Tools
-<img src="https://img.shields.io/badge/AWS EC2-FF9900?style=flat-square&logo=Amazon EC2&logoColor=white"/> <img src="https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=NGINX&logoColor=white"/> <img src="https://img.shields.io/badge/PM2-2B037A?style=flat-square&logo=PM2&logoColor=white"/>
+### 🌐 백엔드
 
-<br/>
+- Node.js + Express
+- MySQL
+- JWT (인증)
+- Axios + Alpha Vantage API
+- AWS EC2 + Nginx + PM2 (서버 배포)
+
+---
 
 ## 📦 주요 기능
 
-### 1. 주식 정보 조회
-- **홈 화면**: 대표 종목 5개의 실시간 등락률 시각화 (색상 및 기호 표시).
-- **상세 페이지**: Recharts를 활용한 실시간 및 일별 차트 제공.
+### 📊 홈 (주식 종목 리스트)
 
-### 2. 모의 투자 (매수/매도)
-- 현재가 기반 매수/매도 주문 (수량 입력 지원).
-- 보유 현금 및 주식 수량 실시간 검증.
+- 대표 종목 5개 테이블로 표시
+- 등락률 시각적 표시 (색상 + 기호)
+- 종목 클릭 시 상세 페이지 이동
 
-### 3. 자산 관리
-- **보유 자산**: 총 자산, 총 수익률 및 종목별 수익률 요약 제공.
-- **거래 내역**: 일시, 종목, 수량, 거래 유형(매수/매도), 금액 상세 조회.
+### 📈 종목 상세 페이지
 
-### 4. 회원 관리
-- JWT 기반 로그인/회원가입.
-- React-hook-form을 이용한 유효성 검사.
+- Recharts 기반 실시간 & 일별 차트 제공
+- 매수/매도 기능 (버튼 및 수량 입력 지원)
 
-<br/>
+### 💰 거래 내역
 
-## 👨‍💻 백엔드 구현 상세 (My Contributions)
+- 일시, 종목, 수량, 유형, 금액 확인
+- 항목 클릭 시 우측 상세 정보 출력 (종목 로고 포함)
 
-### 1️⃣ DB 설계 및 정규화
-- 도메인 주도 설계를 통한 MySQL 테이블 구축.
-- `User` - `Asset` (1:1), `User` - `Transactions` (1:N) 등 관계 설정 및 정규화 적용.
+### 📂 보유 자산
 
-### 2️⃣ 안정적인 주식 거래 API
-- 매수/매도 프로세스에 **DB Transaction**을 적용하여 데이터 원자성 보장.
-- 현금 부족, 보유 수량 부족 등 다양한 예외 케이스에 대한 유효성 검사 로직 구현.
+- 총 자산/수익률 요약 및 종목별 수익률 표시
+- 컬럼 클릭 시 정렬 기능
 
-### 3️⃣ 외부 API 한계 극복 및 캐싱 시스템
-- **문제**: Alpha Vantage 무료 플랜의 호출 횟수 제한으로 인한 서비스 불안정.
-- **해결**: `node-cron`을 도입하여 주기적으로 데이터를 수집하고 DB에 캐싱.
-    - 한국 시간 기준 특정 시간대(11, 13, 15, 17시) 자동 업데이트.
-    - 프론트엔드는 외부 API가 아닌 내부 DB를 조회하도록 변경하여 속도 및 안정성 확보.
+### 🔐 로그인 / 회원가입
 
-### 4️⃣ RESTful API 구조화
-- `/stocks`, `/transactions`, `/assets`, `/users` 등 리소스별 라우터 분리.
-- 유지보수성을 위해 **Controller - Service - Model** 계층 구조 도입.
+- react-hook-form 기반 유효성 검사
+- 성공/실패 여부에 따른 알림 처리
 
-<br/>
+---
+
+## 👨‍💻 내 역할 - 백엔드
+
+### 1. DB 설계 및 구축
+
+- 도메인 기반 MySQL 테이블 직접 설계
+- 정규화 및 관계 설정
+  - ex) user - asset (1:1), user - transactions (1:N)
+
+### 2. 주식 거래 API 개발
+
+- 매수/매도/거래내역/자산 조회/주식 가격 확인 등 구현
+- DB 트랜잭션으로 원자성 보장
+- 유효성 검사: 현금 부족, 수량 부족 등
+
+### 3. 실시간 주식 가격 캐싱 시스템
+
+- Alpha Vantage API 이용, 가격 데이터 주기적 캐싱
+- `stock_prices` 테이블 또는 메모리 저장 → API 호출 최소화
+
+### 4. RESTful API 및 라우터 구조화
+
+- `/stocks`, `/transactions`, `/assets`, `/users` 등 모듈화
+- 라우터-컨트롤러-모델 구조화
+
+### 5. JWT 인증 및 보안
+
+- 로그인 시 JWT 토큰 발급, 인증된 요청만 처리
+- bcrypt 비밀번호 해싱 및 인증 로직 구현
+
+### 6. 서버 배포 및 운영
+
+- AWS EC2 Ubuntu 인스턴스에 Express 앱 배포
+- Nginx 리버스 프록시 및 PM2로 프로세스 관리
+
+---
 
 ## 🧩 Problems & Solutions (Detailed)
 
-### 1. 실시간 시세 API 호출 제한으로 인한 서비스 불안정
-**문제**: 초기에는 프론트에서 직접 Alpha Vantage API를 호출하도록 구현했으나, 무료 플랜 호출 제한(API Limit)으로 인해 다중 접속 시 데이터가 누락되거나(`undefined/null`) 서비스가 중단되는 현상 발생.
+1. **실시간 시세 API 호출 제한으로 인한 서비스 불안정**  
+초기에는 프론트에서 직접 Alpha Vantage API를 호출하도록 구현했지만, 무료 플랜 호출 제한 때문에 동시에 여러 사용자가 접속하면 API Limit 초과가 발생했습니다.  
+일부 종목 데이터가 누락되거나 화면에 undefined/null이 표시되었고, 조회 시 응답 속도도 느려졌습니다. 특히 API 호출 실패 시 대체 데이터가 없어 서비스가 중단되는 문제가 있었습니다.
 
-**해결**:
-- 백엔드에서 주기적으로 데이터를 수집하고 DB에 캐싱하도록 구조 전환.
-- `node-cron`을 활용해 한국 시간 기준 장 운영 시간대(밤 11시~새벽 5시)에 가격 수집.
-- 프론트는 외부 API가 아닌 DB를 조회하도록 변경하여 안정성 확보.
+**해결**  
+- 백엔드에서 주기적으로 데이터를 수집하고 DB에 캐싱하도록 구조 전환  
+- `node-cron`으로 한국 시간 기준 밤 11시, 1시, 3시, 5시에 가격 수집  
+- 종가 정보는 `daily_stock_prices`, 실시간 가격은 `stock_prices`에 저장  
+- 프론트는 항상 DB를 조회하도록 변경  
 
-```javascript
-// 시간별 가격 수집 (장 운영 시간 고려)
+```js
+// 시간별 가격 수집
 cron.schedule("0 14,16,18,20 * * *", async () => { ... });
 
-// 일별 종가 수집
+// 일별 가격 수집
 cron.schedule("0 0 * * *", async () => { ... });
-````
+
 
 ### 2\. 주식 자산 계산 시 데이터 불일치 문제
 
