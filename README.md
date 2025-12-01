@@ -228,19 +228,19 @@ exports.updateCash = ...
   - **보안**: JWT를 이용한 인증 처리 및 사용자 정보 보호 설계.
   - **인프라**: AWS EC2 인스턴스에 서버를 배포하고 Nginx와 PM2로 운영하는 실무 경험.
 
-<br>
+<br/>
 
 ## 📸 실행 화면
 
 | 홈 화면 | 종목 상세 |
 | :---: | :---: |
-|  |  |
+| ![홈 화면](./screenshot/home.png) | ![종목 상세](./screenshot/info.png) |
 | **로그인** | **자산 현황** |
-|  |  |
+| ![로그인](./screenshot/login.png) | ![자산](./screenshot/asset.png) |
 | **회원가입** | **거래 내역** |
-|  |  |
+| ![회원가입](./screenshot/signup.png) | ![거래 내역](./screenshot/transaction.png) |
 
-<br>
+<br/>
 
 ## 🧱 설치 및 실행 방법 (Installation)
 
