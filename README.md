@@ -1,288 +1,163 @@
 # 📈 ProgramerStocks - 모의 주식 투자 시뮬레이터
 
-> 실제 주식 거래처럼! 실시간 가격 변동을 반영한 종목 매수/매도 시뮬레이션 웹 서비스
+> **실제 주식 거래처럼! 실시간 가격 변동을 반영한 종목 매수/매도 시뮬레이션 웹 서비스**
 
----
+![Generic badge](https://img.shields.io/badge/Node.js-18.x-green.svg) ![Generic badge](https://img.shields.io/badge/React-18.x-blue.svg) ![Generic badge](https://img.shields.io/badge/MySQL-8.0-orange.svg)
 
-## 🔗 배포 주소 & GitHub
+<br/>
 
-- GitHub: [https://github.com/kevinmj12/stock-simulator](https://github.com/kevinmj12/stock-simulator)
+## 🔗 링크
+- **GitHub Repository**: [https://github.com/kevinmj12/stock-simulator](https://github.com/kevinmj12/stock-simulator)
 
----
+<br/>
 
 ## 🗓️ 프로젝트 개요
 
-| 항목       | 내용                                     |
-| ---------- | ---------------------------------------- |
-| 프로젝트명 | ProgramerStocks                          |
-| 개발 기간  | 2025.05.20 \~ 2025.06.11                 |
-| 팀 구성    | 4인 팀 프로젝트 (프론트엔드 2, 백엔드 2) |
-| 내 역할    | 백엔드 API 개발 및 서버 배포             |
+| 항목 | 내용 |
+| --- | --- |
+| **프로젝트명** | ProgramerStocks |
+| **개발 기간** | 2025.05.20 ~ 2025.06.11 (약 3주) |
+| **팀 구성** | 4인 팀 프로젝트 (Frontend 2명, Backend 2명) |
+| **담당 역할** | **Backend Lead** (API 설계 및 개발, DB 구축, 서버 배포) |
 
----
+<br/>
 
-## 🛠️ 기술 스택
+## 🛠️ 기술 스택 (Tech Stack)
 
-### 💻 프론트엔드
+### 💻 Frontend
+<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white"/> <img src="https://img.shields.io/badge/Styled Components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/> <img src="https://img.shields.io/badge/Zustand-orange?style=flat-square&logo=react&logoColor=white"/> <img src="https://img.shields.io/badge/Recharts-22B5BF?style=flat-square&logo=apache-echarts&logoColor=white"/>
 
-- React + TypeScript
-- styled-components
-- Zustand (상태관리)
-- Recharts (차트 시각화)
-- react-hook-form (폼 유효성 검사)
+### 🌐 Backend
+<img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=Node.js&logoColor=white"/> <img src="https://img.shields.io/badge/Express-000000?style=flat-square&logo=Express&logoColor=white"/> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/> <img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=JSON%20web%20tokens&logoColor=white"/> <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=Axios&logoColor=white"/>
 
-### 🌐 백엔드
+### 🚀 DevOps & Tools
+<img src="https://img.shields.io/badge/AWS EC2-FF9900?style=flat-square&logo=Amazon EC2&logoColor=white"/> <img src="https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=NGINX&logoColor=white"/> <img src="https://img.shields.io/badge/PM2-2B037A?style=flat-square&logo=PM2&logoColor=white"/>
 
-- Node.js + Express
-- MySQL
-- JWT (인증)
-- Axios + Alpha Vantage API
-- AWS EC2 + Nginx + PM2 (서버 배포)
-
----
+<br/>
 
 ## 📦 주요 기능
 
-### 📊 홈 (주식 종목 리스트)
+### 1. 주식 정보 조회
+- **홈 화면**: 대표 종목 5개의 실시간 등락률 시각화 (색상 및 기호 표시).
+- **상세 페이지**: Recharts를 활용한 실시간 및 일별 차트 제공.
 
-- 대표 종목 5개 테이블로 표시
-- 등락률 시각적 표시 (색상 + 기호)
-- 종목 클릭 시 상세 페이지 이동
+### 2. 모의 투자 (매수/매도)
+- 현재가 기반 매수/매도 주문 (수량 입력 지원).
+- 보유 현금 및 주식 수량 실시간 검증.
 
-### 📈 종목 상세 페이지
+### 3. 자산 관리
+- **보유 자산**: 총 자산, 총 수익률 및 종목별 수익률 요약 제공.
+- **거래 내역**: 일시, 종목, 수량, 거래 유형(매수/매도), 금액 상세 조회.
 
-- Recharts 기반 실시간 & 일별 차트 제공
-- 매수/매도 기능 (버튼 및 수량 입력 지원)
+### 4. 회원 관리
+- JWT 기반 로그인/회원가입.
+- React-hook-form을 이용한 유효성 검사.
 
-### 💰 거래 내역
+<br/>
 
-- 일시, 종목, 수량, 유형, 금액 확인
-- 항목 클릭 시 우측 상세 정보 출력 (종목 로고 포함)
+## 👨‍💻 백엔드 구현 상세 (My Contributions)
 
-### 📂 보유 자산
+### 1️⃣ DB 설계 및 정규화
+- 도메인 주도 설계를 통한 MySQL 테이블 구축.
+- `User` - `Asset` (1:1), `User` - `Transactions` (1:N) 등 관계 설정 및 정규화 적용.
 
-- 총 자산/수익률 요약 및 종목별 수익률 표시
-- 컬럼 클릭 시 정렬 기능
+### 2️⃣ 안정적인 주식 거래 API
+- 매수/매도 프로세스에 **DB Transaction**을 적용하여 데이터 원자성 보장.
+- 현금 부족, 보유 수량 부족 등 다양한 예외 케이스에 대한 유효성 검사 로직 구현.
 
-### 🔐 로그인 / 회원가입
+### 3️⃣ 외부 API 한계 극복 및 캐싱 시스템
+- **문제**: Alpha Vantage 무료 플랜의 호출 횟수 제한으로 인한 서비스 불안정.
+- **해결**: `node-cron`을 도입하여 주기적으로 데이터를 수집하고 DB에 캐싱.
+    - 한국 시간 기준 특정 시간대(11, 13, 15, 17시) 자동 업데이트.
+    - 프론트엔드는 외부 API가 아닌 내부 DB를 조회하도록 변경하여 속도 및 안정성 확보.
 
-- react-hook-form 기반 유효성 검사
-- 성공/실패 여부에 따른 알림 처리
+### 4️⃣ RESTful API 구조화
+- `/stocks`, `/transactions`, `/assets`, `/users` 등 리소스별 라우터 분리.
+- 유지보수성을 위해 **Controller - Service - Model** 계층 구조 도입.
 
----
+<br/>
 
-## 👨‍💻 내 역할 - 백엔드
+## 🔥 트러블 슈팅 (Technical Issues & Solutions)
 
-### 1. DB 설계 및 구축
+<details>
+<summary><b>1. 외부 API 호출 제한으로 인한 데이터 누락 및 속도 저하</b></summary>
+<div markdown="1">
 
-- 도메인 기반 MySQL 테이블 직접 설계
-- 정규화 및 관계 설정
-  - ex) user - asset (1:1), user - transactions (1\:N)
+- **문제 상황**: 사용자가 동시에 접속 시 Alpha Vantage API의 Rate Limit에 걸려 데이터가 `undefined`로 뜨거나 로딩이 지연됨.
+- **해결 방법**:
+    - 백엔드에서 `node-cron`을 이용해 정해진 시간에 주가 데이터를 수집하여 DB(`stock_prices`, `daily_stock_prices`)에 저장.
+    - 클라이언트는 항상 DB의 캐싱된 데이터를 조회하도록 변경.
+- **결과**: 외부 API 의존도를 낮추고 응답 속도를 획기적으로 개선함.
 
-### 2. 주식 거래 API 개발
+</div>
+</details>
 
-- 매수/매도/거래내역/자산 조회/주식 가격 확인 등 구현
-- DB 트랜잭션으로 원자성 보장
-- 유효성 검사: 현금 부족, 수량 부족 등
+<details>
+<summary><b>2. 자산 가치 계산 시 데이터 불일치 문제</b></summary>
+<div markdown="1">
 
-### 3. 실시간 주식 가격 캐싱 시스템
+- **문제 상황**: 주식 자산 조회 시점마다 기준 가격이 달라지거나, 과거 데이터와 혼재되어 정확한 수익률 계산이 어려움.
+- **해결 방법**:
+    - 가장 최신의 `fetched_at` 시간을 서브쿼리로 조회하여 해당 시점의 가격(`current_price`)만을 JOIN.
+    - `valuation = quantity * current_price`, `profit = valuation - (quantity * average_price)` 공식으로 일관된 기준 확립.
 
-- Alpha Vantage API 이용, 가격 데이터 주기적 캐싱
-- `stock_prices` 테이블 또는 메모리 저장 → API 호출 최소화
+</div>
+</details>
 
-### 4. RESTful API 및 라우터 구조화
+<details>
+<summary><b>3. 잘못된 요청 데이터(Type Error)로 인한 무결성 위협</b></summary>
+<div markdown="1">
 
-- `/stocks`, `/transactions`, `/assets`, `/users` 등 모듈화
-- 라우터-컨트롤러-모델 구조화
+- **문제 상황**: `cash`나 `quantity`에 문자열이나 `null` 값이 들어올 경우 DB 에러 발생 가능성.
+- **해결 방법**:
+    - 컨트롤러 단에서 1차 유효성 검증(Validation) 로직 추가.
+    - 숫자가 아니거나 음수인 경우 400 Bad Request 반환하여 DB 오염 방지.
 
-### 5. JWT 인증 및 보안
+</div>
+</details>
 
-- 로그인 시 JWT 토큰 발급, 인증된 요청만 처리
-- bcrypt 비밀번호 해싱 및 인증 로직 구현
+<details>
+<summary><b>4. 등락률 데이터 부재 해결</b></summary>
+<div markdown="1">
 
-### 6. 서버 배포 및 운영
+- **문제 상황**: API에서 전일 대비 등락률을 제공하지 않음.
+- **해결 방법**: 전일 종가와 현재가를 비교하여 백엔드에서 직접 `change_rate` 계산 후 응답값에 포함. (`((curr - prev) / prev) * 100`)
 
-- AWS EC2 Ubuntu 인스턴스에 Express 앱 배포
-- Nginx 리버스 프록시 및 PM2로 프로세스 관리
+</div>
+</details>
 
----
+<br/>
 
-🧩 Problems & Solutions (Detailed)
-1. 실시간 시세 API 호출 제한으로 인한 서비스 불안정
+## 📸 실행 화면
 
-초기에는 프론트에서 직접 Alpha Vantage API를 호출하도록 구현했지만, 무료 플랜의 호출 제한 때문에 동시에 여러 사용자가 접속하면 API Limit 초과가 발생했습니다.
-일부 종목 데이터가 누락되거나 화면에 undefined/null이 표시되었고, 조회 시 응답 속도도 느려졌습니다. 특히 API 호출 실패 시 대체 데이터가 없어 서비스가 중단되는 문제가 있었습니다.
+| 홈 화면 | 종목 상세 |
+| :---: | :---: |
+| ![홈 화면](./screenshot/home.png) | ![종목 상세](./screenshot/info.png) |
+| **로그인** | **자산 현황** |
+| ![로그인](./screenshot/login.png) | ![자산](./screenshot/asset.png) |
+| **회원가입** | **거래 내역** |
+| ![회원가입](./screenshot/signup.png) | ![거래 내역](./screenshot/transaction.png) |
 
-해결 방법
+<br/>
 
-백엔드에서 주기적으로 데이터를 수집하고 DB에 캐싱하도록 구조 전환
-
-node-cron을 활용해 한국 시간 기준 밤 11시, 1시, 3시, 5시에 가격 수집
-
-종가 정보는 daily_stock_prices 테이블, 실시간에 가까운 가격은 stock_prices 테이블에 저장
-
-프론트는 항상 DB를 조회하도록 변경
-
-// 시간별 가격 수집
-cron.schedule("0 14,16,18,20 * * *", async () => { ... });
-
-// 일별 가격 수집
-cron.schedule("0 0 * * *", async () => { ... });
-
-
-이로 인해 외부 API 호출 횟수가 감소하고 응답 속도가 개선되며, 장애 상황에서도 서비스가 유지되는 안정성을 확보할 수 있었습니다.
-
-2. 주식 자산 계산 시 데이터 불일치 문제
-
-처음에는 사용자의 주식 자산 조회 시 기준 가격이 명확하지 않아, 조회 시점마다 결과가 달라지거나 최신 가격을 가져오지 못하는 문제가 발생했습니다.
-
-해결 방법
-
-종목별 최신 fetched_at 시간을 서브쿼리로 조회
-
-해당 시간의 가격만 JOIN하여 계산
-
-자산 및 수익률 계산 시 일관된 기준 사용
-
-const valuation = h.quantity * h.current_price;
-const profit = valuation - h.quantity * h.average_price;
-
-
-덕분에 언제 조회해도 일관된 기준으로 자산을 계산할 수 있고, 실제 시장 가격 기반 평가가 가능해 데이터 신뢰도가 높아졌습니다.
-
-3. 잘못된 요청으로 인한 데이터 무결성 위험
-
-사용자가 cash나 quantity에 문자열, null, undefined 등 비정상적인 값을 전송하면 DB에 잘못된 데이터가 저장될 가능성이 있었습니다.
-
-해결 방법
-
-서버에서 모든 중요한 값을 1차 검증
-
-숫자 여부를 체크하고 조건을 만족하지 않으면 요청 차단
-
-if (cash === undefined || isNaN(cash)) {
-  return res.status(400).json({ error: "cash는 숫자여야 합니다" });
-}
-
-
-이 방식으로 잘못된 요청을 즉시 차단하고, 데이터 오염을 방지할 수 있었습니다.
-
-4. 주식 등락률 계산 로직 부재
-
-Alpha Vantage API에서 등락률을 제공하지 않아, 직접 계산해야 했습니다.
-전일 종가(daily_stock_prices)와 오늘의 최신 가격(stock_prices)을 비교해야 했기 때문에, 값이 없거나 잘못된 경우 에러가 발생할 수 있었습니다.
-
-해결 방법
-
-전일 종가와 최신 가격을 안전하게 비교
-
-등락률을 change_rate 필드로 계산 후 응답에 포함
-
-function calculateChangeRate(prevPrice, currPrice) {
-  if (!prevPrice || !currPrice || prevPrice === 0) return null;
-  return parseFloat((((currPrice - prevPrice) / prevPrice) * 100).toFixed(1));
-}
-
-
-프론트에서는 별도 계산 없이 바로 등락률을 표시할 수 있도록 구조를 개선했습니다.
-
-5. 기능 증가로 인한 코드 복잡도 상승
-
-자산 조회, 종목 조회, 가격 수집, 현금 관리 등 기능이 한곳에 섞이면 유지보수성이 떨어질 위험이 있었습니다.
-
-해결 방법
-
-각 기능을 명확히 분리하고 RESTful 구조 적용
-
-exports.getStockList
-exports.getStockDetail
-exports.getMyAssets
-exports.updateCash
-
-
-SQL과 비즈니스 로직을 분리하여 코드 가독성 및 확장성 확보
-
-6. 수동 운영 → 자동화 시스템
-
-처음에는 데이터를 수동으로 갱신해야 했지만, 실제 서비스 운영에는 적합하지 않았습니다.
-
-해결 방법
-
-cron 기반 자동 수집 시스템 구축
-
-서버만 켜두면 자동으로 데이터 업데이트
-
-덕분에 실제 서비스 운영 환경과 유사한 구조를 구현할 수 있었습니다.
-
-## 🤝 협업 방식
-
-- GitHub Flow 기반 브랜치 전략 (`feature/#issue`, `main`, `dev`)
-- 이슈 관리 및 PR 리뷰 진행
-- 커밋 메시지 규칙 통일 (feat, fix, chore 등)
-
----
-
-## 📚 프로젝트를 통해 배운 점
-
-- 주식 시장 데이터의 실시간 처리 및 캐싱 방식 이해
-- 백엔드 트랜잭션 처리와 비동기 흐름 제어
-- JWT를 이용한 인증 처리 및 보안 설계
-- EC2 기반 서버 배포 및 운영 경험
-
----
-
-## 🧱 설치 및 실행 방법
+## 🧱 설치 및 실행 방법 (Installation)
 
 ```bash
-# 1. 레포 클론
-$ git clone https://github.com/kevinmj12/stock-simulator.git
+# 1. Repository Clone
+$ git clone [https://github.com/kevinmj12/stock-simulator.git](https://github.com/kevinmj12/stock-simulator.git)
 
-# 2. 백엔드 설치
+# 2. Backend Setup
 $ cd backend
 $ npm install
 
-# 3. .env 설정
-MYSQL_HOST=...
-MYSQL_USER=...
-ALPHA_VANTAGE_API_KEY=...
-JWT_SECRET=...
+# 3. Environment Configuration (.env)
+# 프로젝트 루트에 .env 파일 생성 후 아래 내용 입력
+MYSQL_HOST=your_host
+MYSQL_USER=your_user
+MYSQL_PASSWORD=your_password
+MYSQL_DB=your_db_name
+ALPHA_VANTAGE_API_KEY=your_api_key
+JWT_SECRET=your_jwt_secret
 
-# 4. 서버 실행
+# 4. Server Start
 $ npm start
-```
-
----
-
-## 주요 화면
-
-홈 화면
-
-![홈 화면](./screenshot/home.png)
-
-종목 상세 페이지
-
-![종목 상세](./screenshot/info.png)
-
-회원 가입
-
-![종목 상세](./screenshot/signup.png)
-
-로그인
-
-![종목 상세](./screenshot/login.png)
-
-지갑
-
-![종목 상세](./screenshot/asset.png)
-
-거래 내역
-
-![종목 상세](./screenshot/transaction.png)
-
----
-
-## 🏁 마무리
-
-이 프로젝트는 실시간 주식 시세와 트랜잭션 기반 매수/매도 시뮬레이션을 구현하며 실제 서비스처럼 작동하는 구조를 만드는 데 집중했습니다. 백엔드 전반을 구현하며 실무 감각을 익힐 수 있었고, EC2 Instance 서버 배포 경험을 통해 동일한 환경에서 작업할 수 있었습니다. 또 팀원과의 소통 및 Git 기반 협업 경험도 큰 자산이 되었습니다.
-
----
