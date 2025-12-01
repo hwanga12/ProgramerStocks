@@ -71,7 +71,7 @@
 
 ---
 
-## 👨‍💻 내 역할 - 백엔드 상세
+## 👨‍💻 내 역할 - 백엔드
 
 ### 1. DB 설계 및 구축
 
@@ -106,6 +106,113 @@
 - Nginx 리버스 프록시 및 PM2로 프로세스 관리
 
 ---
+
+🧩 Problems & Solutions (Detailed)
+1. 실시간 시세 API 호출 제한으로 인한 서비스 불안정
+
+초기에는 프론트에서 직접 Alpha Vantage API를 호출하도록 구현했지만, 무료 플랜의 호출 제한 때문에 동시에 여러 사용자가 접속하면 API Limit 초과가 발생했습니다.
+일부 종목 데이터가 누락되거나 화면에 undefined/null이 표시되었고, 조회 시 응답 속도도 느려졌습니다. 특히 API 호출 실패 시 대체 데이터가 없어 서비스가 중단되는 문제가 있었습니다.
+
+해결 방법
+
+백엔드에서 주기적으로 데이터를 수집하고 DB에 캐싱하도록 구조 전환
+
+node-cron을 활용해 한국 시간 기준 밤 11시, 1시, 3시, 5시에 가격 수집
+
+종가 정보는 daily_stock_prices 테이블, 실시간에 가까운 가격은 stock_prices 테이블에 저장
+
+프론트는 항상 DB를 조회하도록 변경
+
+// 시간별 가격 수집
+cron.schedule("0 14,16,18,20 * * *", async () => { ... });
+
+// 일별 가격 수집
+cron.schedule("0 0 * * *", async () => { ... });
+
+
+이로 인해 외부 API 호출 횟수가 감소하고 응답 속도가 개선되며, 장애 상황에서도 서비스가 유지되는 안정성을 확보할 수 있었습니다.
+
+2. 주식 자산 계산 시 데이터 불일치 문제
+
+처음에는 사용자의 주식 자산 조회 시 기준 가격이 명확하지 않아, 조회 시점마다 결과가 달라지거나 최신 가격을 가져오지 못하는 문제가 발생했습니다.
+
+해결 방법
+
+종목별 최신 fetched_at 시간을 서브쿼리로 조회
+
+해당 시간의 가격만 JOIN하여 계산
+
+자산 및 수익률 계산 시 일관된 기준 사용
+
+const valuation = h.quantity * h.current_price;
+const profit = valuation - h.quantity * h.average_price;
+
+
+덕분에 언제 조회해도 일관된 기준으로 자산을 계산할 수 있고, 실제 시장 가격 기반 평가가 가능해 데이터 신뢰도가 높아졌습니다.
+
+3. 잘못된 요청으로 인한 데이터 무결성 위험
+
+사용자가 cash나 quantity에 문자열, null, undefined 등 비정상적인 값을 전송하면 DB에 잘못된 데이터가 저장될 가능성이 있었습니다.
+
+해결 방법
+
+서버에서 모든 중요한 값을 1차 검증
+
+숫자 여부를 체크하고 조건을 만족하지 않으면 요청 차단
+
+if (cash === undefined || isNaN(cash)) {
+  return res.status(400).json({ error: "cash는 숫자여야 합니다" });
+}
+
+
+이 방식으로 잘못된 요청을 즉시 차단하고, 데이터 오염을 방지할 수 있었습니다.
+
+4. 주식 등락률 계산 로직 부재
+
+Alpha Vantage API에서 등락률을 제공하지 않아, 직접 계산해야 했습니다.
+전일 종가(daily_stock_prices)와 오늘의 최신 가격(stock_prices)을 비교해야 했기 때문에, 값이 없거나 잘못된 경우 에러가 발생할 수 있었습니다.
+
+해결 방법
+
+전일 종가와 최신 가격을 안전하게 비교
+
+등락률을 change_rate 필드로 계산 후 응답에 포함
+
+function calculateChangeRate(prevPrice, currPrice) {
+  if (!prevPrice || !currPrice || prevPrice === 0) return null;
+  return parseFloat((((currPrice - prevPrice) / prevPrice) * 100).toFixed(1));
+}
+
+
+프론트에서는 별도 계산 없이 바로 등락률을 표시할 수 있도록 구조를 개선했습니다.
+
+5. 기능 증가로 인한 코드 복잡도 상승
+
+자산 조회, 종목 조회, 가격 수집, 현금 관리 등 기능이 한곳에 섞이면 유지보수성이 떨어질 위험이 있었습니다.
+
+해결 방법
+
+각 기능을 명확히 분리하고 RESTful 구조 적용
+
+exports.getStockList
+exports.getStockDetail
+exports.getMyAssets
+exports.updateCash
+
+
+SQL과 비즈니스 로직을 분리하여 코드 가독성 및 확장성 확보
+
+6. 수동 운영 → 자동화 시스템
+
+처음에는 데이터를 수동으로 갱신해야 했지만, 실제 서비스 운영에는 적합하지 않았습니다.
+
+해결 방법
+
+cron 기반 자동 수집 시스템 구축
+
+서버만 켜두면 자동으로 데이터 업데이트
+
+덕분에 실제 서비스 운영 환경과 유사한 구조를 구현할 수 있었습니다.
 
 ## 🤝 협업 방식
 
